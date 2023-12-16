@@ -35,6 +35,12 @@ func (f FuncRespHandler) Handle(resp *http.Response, ctx *ProxyCtx) *http.Respon
 	return f(resp, ctx)
 }
 
+// PATCH: gomobile
+type HandleConnectResult struct {
+	ConnectAction *ConnectAction
+	Host          string
+}
+
 // When a client send a CONNECT request to a host, the request is filtered through
 // all the HttpsHandlers the proxy has, and if one returns true, the connection is
 // sniffed using Man in the Middle attack.
@@ -44,14 +50,29 @@ func (f FuncRespHandler) Handle(resp *http.Response, ctx *ProxyCtx) *http.Respon
 // The request and responses sent in this Man In the Middle channel are filtered
 // through the usual flow (request and response filtered through the ReqHandlers
 // and RespHandlers)
+
+// PATCH: gomobile
+// Return HandleConnectResult instead of two values
 type HttpsHandler interface {
-	HandleConnect(req string, ctx *ProxyCtx) (*ConnectAction, string)
+	// HandleConnect(req string, ctx *ProxyCtx) (*ConnectAction, string) // PATCH: gomobile
+	HandleConnect(req string, ctx *ProxyCtx) *HandleConnectResult
 }
 
 // A wrapper that would convert a function to a HttpsHandler interface type
-type FuncHttpsHandler func(host string, ctx *ProxyCtx) (*ConnectAction, string)
+// PATCH: gomobile
+// type FuncHttpsHandler func(host string, ctx *ProxyCtx) (*ConnectAction, string)
+type FuncHttpsHandler func(host string, ctx *ProxyCtx) *HandleConnectResult
 
 // FuncHttpsHandler should implement the RespHandler interface
+// PATCH: gombobile
+
+/*
 func (f FuncHttpsHandler) HandleConnect(host string, ctx *ProxyCtx) (*ConnectAction, string) {
 	return f(host, ctx)
+} */
+
+func (f FuncHttpsHandler) HandleConnect(host string, ctx *ProxyCtx) *HandleConnectResult {
+	// construct HandleConnectResult with return values of f(host, ctx)
+	return f(host, ctx)
+	//return &HandleConnectResult{connectAction, host}
 }

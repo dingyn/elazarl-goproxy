@@ -114,7 +114,11 @@ func (proxy *ProxyHttpServer) handleHttps(w http.ResponseWriter, r *http.Request
 	ctx.Logf("Running %d CONNECT handlers", len(proxy.httpsHandlers))
 	todo, host := OkConnect, r.URL.Host
 	for i, h := range proxy.httpsHandlers {
-		newtodo, newhost := h.HandleConnect(host, ctx)
+		// PATCH: gomobile
+		// newtodo, newhost := h.HandleConnect(host, ctx)
+		handleConnectResult := h.HandleConnect(host, ctx)
+		newtodo := handleConnectResult.ConnectAction
+		newhost := handleConnectResult.Host
 
 		// If found a result, break the loop immediately
 		if newtodo != nil {
