@@ -259,7 +259,9 @@ func (pcond *ReqProxyConds) HandleConnect(h HttpsHandler) {
 //		}
 //		return RejectConnect, host
 //	})
-func (pcond *ReqProxyConds) HandleConnectFunc(f func(host string, ctx *ProxyCtx) (*ConnectAction, string)) {
+
+// PATCH: gomobile
+func (pcond *ReqProxyConds) HandleConnectFunc(f func(host string, ctx *ProxyCtx) *HandleConnectResult) {
 	pcond.HandleConnect(FuncHttpsHandler(f))
 }
 
