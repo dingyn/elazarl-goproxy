@@ -1,5 +1,5 @@
-github.com/dingyn/elazarl-goproxy v0.0.0-20231216192207-bb065bdb12cc h1:l5hppv/lFyy409rRIvwTecKXrzDQkKv1P7IpBgg6EvI=
-github.com/dingyn/elazarl-goproxy v0.0.0-20231216192207-bb065bdb12cc/go.mod h1:q/jpZClzv1vLc0MGRG63kmOhIhzfkM9QyO24KNx6KtY=
+github.com/dingyn/elazarl-goproxy v0.0.0-20231216211319-32730adc370c h1:4wV6pSn6td2+y4hn8+XVLBuvx2C5rmSi9jdL+8KtpLg=
+github.com/dingyn/elazarl-goproxy v0.0.0-20231216211319-32730adc370c/go.mod h1:T4uz9lzdXEMinGl6kJzXx3/ujVWGbCGuvUxrpY4yl0M=
 github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 h1:dWB6v3RcOy03t/bUadywsbyrQwCqZeNIEX6M1OtSZOM=
 github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2/go.mod h1:gNh8nYJoAm43RfaxurUnxr+N1PwuFV3ZMl/efxlIlY8=
 github.com/rogpeppe/go-charset v0.0.0-20180617210344-2471d30d28b4/go.mod h1:qgYeAmZ5ZIpBWTGllZSQnw97Dj+woV0toclVaRGI8pc=
